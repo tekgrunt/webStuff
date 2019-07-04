@@ -1,12 +1,5 @@
 <!doctype html>
 
-<!--
-  This file is a scratch pad for the Startups Care 2017 initiative header that is being created inside of the TeamRaiser platform
-  within the Blackbaud eco system. We are using inline CSS because that is all their CMS system allows for.
-
-  Basically this an area to work out ideas in an effieicent manner before moving them over to the CMS.
--->
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -14,48 +7,86 @@
   <title></title>
   <meta name="description" content="">
   <meta name="author" content="">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
 
 
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
-
-  <style>
-    #main-img{
-      height: 400px;
-      width:100%;
-      background-size: cover;
-      background-position: center;
-    }
-
-    @media screen and (max-width: 767px) {
-      #main-img{
-        background-image: url(images/header-small.jpg);
-      }
-    }
-
-    @media screen and (min-width: 768px) {
-        #main-img{
-          background-image: url(images/header-small.jpg);
-        }
-    }
-    @media (min-width: 992px) {
-          #main-img{
-              background-image: url(images/header.jpg);
-          }
-    }
-    @media (min-width: 1200px) {
-         #main-img{
-             background-image: url(images/header.jpg);
-         }
-    }
-  </style>
 </head>
 
 <body>
-  <div class="container">
-      <div id="main-img" />
-  </div>
-<!-- <img src="images/header.jpg" width="100%" /> -->
+  <style>
+    .table {
+      width: 100%;
+      background-color: #ccc;
+      border-collapse: collapse;
+    }
+    .table-div {
+      min-height: 50px;
+      min-width: 300px;
+      margin: auto;
+      border: 5px solid white;
+  
+    }
+  </style>
+
+  <table class="table">
+    <tr>
+      <td colspan="14">
+        <div class="table-div">
+          Replicants
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <div class="table-div">
+          Search
+        </div>
+      </td>
+      <td colspan="4">
+        <div class="table-div">
+          Visualization
+        </div>
+      </td>
+      <td colspan="4">
+        <div class="table-div">
+          Replay
+        </div>
+      </td>
+      <td height="100%" rowspan="3">
+        <div style="height: 100%;" class="table-div">
+          D&R Rules
+        </div>
+      </td>
+    </tr>
+    <tr>
+        <td colspan="8">
+          <div class="table-div">
+            Retention
+          </div>
+        </td>
+        <td colspan="4">
+          <div class="table-div">
+            Forwarding
+          </div>
+        </td>
+        <!-- <td colspan="2"></td> -->
+    </tr>
+    <tr>
+        <td colspan="4">
+          <div class="table-div">
+            External Logs
+          </div>
+        </td>
+        <td colspan="8">
+          <div class="table-div">
+            Endpoint Detection & Response
+          </div>
+        </td>
+    </tr>
+  </table>
+
 </body>
 </html>
