@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>LimaCharlie</title>
+	<meta name="description" content="LimaCharlie: Security Infrastructure as a Service (SIaaS)">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' href='./style/style.css'>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
+	<style>
+      #scrolly {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 1rem;
+      }
+      #scrolly > * {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+      }
+      article {
+        position: relative;
+        padding: 0 1rem;
+        max-width: 40%;
+      }
+      figure {
+        position: -webkit-sticky;
+        position: sticky;
+        width: 100%;
+        margin: 0;
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+      figure p {
+        text-align: center;
+        padding: 1rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -moz-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        font-size: 8rem;
+        font-weight: 900;
+        color: #fff;
+      }
+      .step {
+        margin: 0 auto 2rem auto;
+        background-color: #3b3b3b;
+        color: #fff;
+      }
+      .step:last-child {
+        margin-bottom: 0;
+      }
+      .step.is-active {
+        background-color: goldenrod;
+        color: #3b3b3b;
+      }
+      .step p {
+        text-align: center;
+        padding: 1rem;
+        font-size: 1.5rem;
+      }
+    </style>
+  
+  </head>
+  
+  <body>
+    <main>
+      <nav>
+        <a href='https://limacharlie.io'>limacharlie.io</a>
+        <!-- <div class='nav__examples'>
+          <a href='https://russellgoldenberg.github.io/scrollama/basic'>Basic</a>
+          <a href='https://russellgoldenberg.github.io/scrollama/progress'>Progress</a>
+          <a href='https://russellgoldenberg.github.io/scrollama/sticky-side'>Sticky Side</a>
+          <a href='https://russellgoldenberg.github.io/scrollama/sticky-overlay'>Sticky Overlay</a>
+        </div> -->
+      </nav>
+      <section id='intro'>
+        <img class='logo' src='./images/logo.png' />
+        <p class='intro__dek'>
+          Security Infrastructure as a Service
+        </p>
+        <div class='intro_text'>
+          <p class='text'>A strong security posture begins with the endpoint but it does not stop there. In order to be effective in the fight against bad actors, endpoint capability needs to be supported by reliable - and scalable - security infrastructure.</p>
+          <p class='text'>Current full-stack solutions are disjoint and cost prohibitive. They require lengthy contracts and are laden with vendor lock-in schemes.</p>
+          <p class='text'>LimaCharlie is an immune response to the current state of endpoint security. A self-serve, on-demand, cloud-based, endpoint security stack that can be spun up  and down as needed to meet demand (all with no contracts). Built for scale - and making use of the latest Google Cloud Platform features - LimaCharlie is able to deliver world-class capability at a price that is an order of magnitude less expensive than the nearest competitor. </p>
+        </div>
+      </section>
+  
+      <section id='scrolly'>
+        
+        <article>
+          <div class='step' data-step='1'>
+            <p>STEP 1</p>
+          </div>
+          <div class='step' data-step='2'>
+            <p>STEP 2</p>
+          </div>
+          <div class='step' data-step='3'>
+            <p>STEP 3</p>
+          </div>
+          <div class='step' data-step='4'>
+            <p>STEP 4</p>
+          </div>
+          <div class='step' data-step='5'>
+              <p>STEP 5</p>
+            </div>
+        </article>
+  
+        <figure>
+          <div class="wrapper">
+            <div id="replicants" class="box1 box">Replicants</div>
+            <div id="search" class="box2 box">Search</div>
+            <div id="visualization" class="box3 box">Visualization</div>
+            <div id="replay" class="box4 box">Replay</div>
+            <div id="drrules" class="box5 box">D&R Rules</div>
+            <div id="retention" class="box6 box">Retention</div>
+            <div id="forwarding" class="box7 box">Forwarding</div>
+            <div id="logs" class="box8 box">External Logs</div>
+            <div id="edr" class="box9 box">Endpoint Detection & Response</div>
+          </div>
+        </figure>
+      </section>
+  
+      <section id='outro'></section>
+    </main>
+    
+    <!-- <div class='debug'></div> -->
+    <script src='https://unpkg.com/d3@5.9.1/dist/d3.min.js'></script>
+    <script src='https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js'></script>
+    <script src='./js/stickyfill.min.js'></script>
+    <script src='./js/scrollama.min.js'></script>
+    <script src='./js/script.js'></script>
+    <script>
+      // using d3 for convenience
+      var main = d3.select('main')
+      var scrolly = main.select('#scrolly');
+      var figure = scrolly.select('figure');
+      var article = scrolly.select('article');
+      var step = article.selectAll('.step');
+      // initialize the scrollama
+      var scroller = scrollama();
+      // generic window resize listener event
+      function handleResize() {
+        // 1. update height of step elements
+        var stepH = Math.floor(window.innerHeight * 0.75);
+        step.style('height', stepH + 'px');
+        var figureHeight = window.innerHeight / 2
+        var figureMarginTop = (window.innerHeight - figureHeight) / 2  
+        figure
+          .style('height', figureHeight + 'px')
+          .style('top', figureMarginTop + 'px');
+        // 3. tell scrollama to update new element dimensions
+        scroller.resize();
+      }
+      // scrollama event handlers
+      function handleStepEnter(response) {
+        console.log(response)
+        // response = { element, direction, index }
+        // add color to current step only
+        step.classed('is-active', function (d, i) {
+          return i === response.index;
+        })
+        // update graphic based on step
+        figure.select('p').text(response.index + 1);
+      }
+      function setupStickyfill() {
+        d3.selectAll('.sticky').each(function () {
+          Stickyfill.add(this);
+        });
+      }
+      function init() {
+        setupStickyfill();
+        // 1. force a resize on load to ensure proper dimensions are sent to scrollama
+        handleResize();
+        // 2. setup the scroller passing options
+        // 		this will also initialize trigger observations
+        // 3. bind scrollama event handlers (this can be chained like below)
+        scroller.setup({
+          step: '#scrolly article .step',
+          offset: 0.33,
+          debug: true,
+        })
+          .onStepEnter(handleStepEnter)
+        // setup resize event
+        window.addEventListener('resize', handleResize);
+      }
+      // kick things off
+      init();
+    </script>
+  </body>
+  
+  </html>
