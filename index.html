@@ -8,7 +8,9 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+  <script src="https://unpkg.com/scrollama"></script>
 
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -16,77 +18,286 @@
 </head>
 
 <body>
+    <script>
+      $(function() {
+        $('#replicants').hover(function() {
+          $('.replicants-desc').css('display', 'inline-block');
+          $('#drrules').css('background-color', '#b4cddf');
+          $('#edr').css('background-color', '#b4cddf');
+          $('#retention').css('background-color', '#b4cddf');
+          $('#logs').css('background-color', '#b4cddf');
+        }, function() {
+          $('.replicants-desc').css('display', '');
+          $('#drrules').css('background-color', '');
+          $('#edr').css('background-color', '');
+          $('#retention').css('background-color', '');
+          $('#logs').css('background-color', '');
+        });
+      });
+      $(function() {
+        $('#search').hover(function() {
+          $('.search-desc').css('display', 'inline-block');
+          $('#retention').css('background-color', '#b4cddf');
+          $('#logs').css('background-color', '#b4cddf');
+          $('#edr').css('background-color', '#b4cddf');
+        }, function() {
+          $('.search-desc').css('display', '');
+          $('#retention').css('background-color', '');
+          $('#logs').css('background-color', '');
+          $('#edr').css('background-color', '');
+        });
+      });
+      $(function() {
+        $('#visualization').hover(function() {
+          $('.visualization-desc').css('display', 'inline-block');
+          $('#retention').css('background-color', '#b4cddf');
+          $('#logs').css('background-color', '#b4cddf');
+          $('#edr').css('background-color', '#b4cddf');
+        }, function() {
+          $('.visualization-desc').css('display', '');
+          $('#retention').css('background-color', '');
+          $('#logs').css('background-color', '');
+          $('#edr').css('background-color', '');
+        });
+      });
+      $(function() {
+        $('#replay').hover(function() {
+          $('.replay-desc').css('display', 'inline-block');
+          $('#retention').css('background-color', '#b4cddf');
+          $('#logs').css('background-color', '#b4cddf');
+          $('#edr').css('background-color', '#b4cddf');
+        }, function() {
+          $('.replay-desc').css('display', '');
+          $('#retention').css('background-color', '');
+          $('#logs').css('background-color', '');
+        });
+      });
+      $(function() {
+        $('#retention').hover(function() {
+          $('.retention-desc').css('display', 'inline-block');
+          $('#edr').css('background-color', '#b4cddf');
+        }, function() {
+          $('.retention-desc').css('display', '');
+          $('#edr').css('background-color', '');
+        });
+      });
+      $(function() {
+        $('#drrules').hover(function() {
+          $('.drrules-desc').css('display', 'inline-block');
+          $('#edr').css('background-color', '#b4cddf');
+        }, function() {
+          $('.retention-desc').css('display', '');
+          $('#edr').css('background-color', '');
+        });
+      });
+      $(function() {
+        $('#forwarding').hover(function() {
+          $('.forwarding-desc').css('display', 'inline-block');
+          $('#edr').css('background-color', '#b4cddf');
+        }, function() {
+          $('.forwarding-desc').css('display', '');
+          $('#edr').css('background-color', '');
+        });
+      });    
+    </script>
+
   <style>
-    .table {
-      width: 100%;
-      background-color: #ccc;
-      border-collapse: collapse;
+
+    body {
+      font-family: 'Roboto Mono', monospace;
     }
-    .table-div {
-      min-height: 50px;
-      min-width: 300px;
-      margin: auto;
-      border: 5px solid white;
-  
+
+    .wrapper { 
+      display: grid; 
+      grid-template-columns: repeat(10, 1fr); 
+      grid-auto-rows: 100px; 
+      column-gap: 1em;  
+      row-gap: 1em;
+    } 
+
+    .box1 { 
+      grid-column-start: 1; 
+      grid-column-end: 11; 
+      grid-row-start: 1; 
+      grid-row-end: 2; 
+    }
+
+    .box2 { 
+      grid-column-start: 1; 
+      grid-column-end: 4; 
+      grid-row-start: 2; 
+      grid-row-end: 3; 
+    }
+
+    .box3 { 
+      grid-column-start: 4; 
+      grid-column-end: 7; 
+      grid-row-start: 2; 
+      grid-row-end: 3; 
+    }
+
+    .box4 { 
+      grid-column-start: 7; 
+      grid-column-end: 10; 
+      grid-row-start: 2; 
+      grid-row-end: 3; 
+    }
+
+    .box5 { 
+      grid-column-start: 10; 
+      grid-column-end: 11; 
+      grid-row-start: 2; 
+      grid-row-end: 5; 
+    }
+
+    .box6 { 
+      grid-column-start: 1; 
+      grid-column-end: 7; 
+      grid-row-start: 3; 
+      grid-row-end: 4; 
+    }
+
+    .box7 { 
+      grid-column-start: 7; 
+      grid-column-end: 10; 
+      grid-row-start: 3; 
+      grid-row-end: 4; 
+    }
+
+    .box8 { 
+      grid-column-start: 1; 
+      grid-column-end: 4; 
+      grid-row-start: 4; 
+      grid-row-end: 5; 
+    }
+
+    .box9 { 
+      grid-column-start: 4; 
+      grid-column-end: 10; 
+      grid-row-start: 4; 
+      grid-row-end: 5; 
+    }
+
+    .box1:hover{ 
+      background-color: #084c7f;
+      color: #fefefe;
+    }
+    .box2:hover { 
+      background-color: #084c7f;
+      color: #fefefe;
+    }
+    .box3:hover { 
+      background-color: #084c7f;
+      color: #fefefe;
+    }
+    .box4:hover { 
+      background-color: #084c7f;
+      color: #fefefe;
+    }
+    .box5:hover { 
+      background-color: #084c7f;
+      color: #fefefe;
+    }
+    .box6:hover { 
+      background-color: #084c7f;
+      color: #fefefe;
+    }
+    .box7:hover { 
+      background-color: #084c7f;
+      color: #fefefe;
+    }
+    .box8:hover { 
+      background-color: #084c7f;
+      color: #fefefe;
+    }
+    .box9:hover { 
+      background-color: #084c7f;
+      color: #fefefe;
+    }
+
+    * {box-sizing: border-box;}
+
+    .wrapper {
+      border-radius: 5px;
+    }
+
+    .wrapper > div {
+      border: 4px solid #084c7f;
+      border-radius: 5px;
+      background-color: #eee;
+      padding: 1em;
+      color: #084c7f;
+    }
+
+    .replicants-desc {display: none;}
+    .search-desc {display: none;}
+    .visualization-desc {display: none;}
+    .replay-desc {display: none;}
+    .drrules-desc {display: none;}
+    .retention-desc {display: none;}
+    .forwarding-desc {display: none;}
+    .logs-desc {display: none;}
+    .edr-desc {display: none;}
+
+    .desc{
+      /* padding-top: 40px; */
+    }
+    .replicants-image{
+      float: left;
+      width: 30%;
+      padding-top: 20px;
+    }
+    .replicants-text{
+      float:left;
+      width: 65%;
+      padding-left: 20px;
     }
   </style>
 
-  <table class="table">
-    <tr>
-      <td colspan="14">
-        <div class="table-div">
-          Replicants
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="4">
-        <div class="table-div">
-          Search
-        </div>
-      </td>
-      <td colspan="4">
-        <div class="table-div">
-          Visualization
-        </div>
-      </td>
-      <td colspan="4">
-        <div class="table-div">
-          Replay
-        </div>
-      </td>
-      <td height="100%" rowspan="3">
-        <div style="height: 100%;" class="table-div">
-          D&R Rules
-        </div>
-      </td>
-    </tr>
-    <tr>
-        <td colspan="8">
-          <div class="table-div">
-            Retention
-          </div>
-        </td>
-        <td colspan="4">
-          <div class="table-div">
-            Forwarding
-          </div>
-        </td>
-        <!-- <td colspan="2"></td> -->
-    </tr>
-    <tr>
-        <td colspan="4">
-          <div class="table-div">
-            External Logs
-          </div>
-        </td>
-        <td colspan="8">
-          <div class="table-div">
-            Endpoint Detection & Response
-          </div>
-        </td>
-    </tr>
-  </table>
+<div class="wrapper">
+    <div id="replicants" class="box1">Replicants</div>
+    <div id="search" class="box2">Search</div>
+    <div id="visualization" class="box3">Visualization</div>
+    <div id="replay" class="box4">Replay</div>
+    <div id="drrules" class="box5">D&R Rules</div>
+    <div id="retention" class="box6">Retention</div>
+    <div id="forwarding" class="box7">Forwarding</div>
+    <div id="logs" class="box8">External Logs</div>
+    <div id="edr" class="box9">Endpoint Detection & Response</div>
+  </div>
+  <div class="replicants-desc desc">
+      <img class="replicants-image" src="./images/replicants.png" />
+      <div class="replicants-text">
+        <p>Replicants can be thought of as digital automatons: expert driven algorithms which utilize some basic artificial intelligence to perform tasks that would normally be completed by humans.</p>
+        <p>Each replicant has a particular specialization and can be enabled at the click of a button in the /Add-ons/ section. Once enabled any given replicant can be configured by interacting with it in the /War Room/ section of the web application.</p>
+      </div>
+  </div>
+  <div class="search-desc desc">
+      <div class="text">
+      Users can search using a sensor ID, hostname prefix, IP address, hash, file path and more. 
+      </div>
+  </div>
+  <div class="visualization-desc desc">
+      With this interface users can explore prevalence and timing data for domains, IP addresses, files, file paths, hashes and users across their entire fleet for up to a year’s worth of telemetry. This console also allows users to search for a given sensor ID and deep dive all of the aforementioned data points for a single endpoint over the given time period
+  </div>
+  <div class="replay-desc desc">
+      Replay allows you to retroactively apply Detection & Response (D&R) rules to LimaCharlie traffic from any point in time during the last year.
+  </div>
+  <div class="drrules-desc desc">
 
+  </div>
+  <div class="retention-desc desc">
+    Along with the powerful elastic detection and response engine, LimaCharlie now offers low-cost, long-term data storage and tools for investigation.
+      Storage and historical insight can be enabled at the click of a button. The cost for a year of storage is a simple $0.50 per sensor per month.
+  </div>
+  <div class="forwarding-desc desc">
+
+  </div>
+  <div class="logs-desc desc">
+
+  </div>
+  <div class="edr-desc desc">
+
+  </div>
 </body>
 </html>
